@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="push" [autoFocus]="false">
+    <div class="links">
+      <a mat-button href="#" target="_blank">
+        <mat-icon>home</mat-icon>
+        Home
+      </a>
+      <a mat-button href="#" target="_blank">
+        <mat-icon>check</mat-icon>
+        Todo
+      </a>
+      <a mat-button href="#" target="_blank">
+        <mat-icon>notes</mat-icon>
+        Notes
+      </a>
+      <a mat-button href="#" target="_blank">
+        <mat-icon>schedule</mat-icon>
+        Schedule
+      </a>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="links">
+      <a mat-button href="#" target="_blank">
+        <mat-icon>login</mat-icon>
+        Login
+      </a>
+      <a mat-button href="#" target="_blank">
+        <mat-icon>person_add</mat-icon>
+        Register
+      </a>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-toolbar (toggleMenuEvent)="sidenav.toggle()"></app-toolbar>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
