@@ -7,3 +7,27 @@ h1 {
   font-size: 3.5rem;
   font-weight: normal;
 }
+
+mat-card.form-card {
+  margin: 0 auto;
+  max-width: 500px;
+
+  mat-card-header {
+    margin-bottom: 1rem;
+  }
+
+  mat-card-content {
+    form {
+      display: flex;
+      flex-direction: column;
+
+      mat-form-field {
+        margin-bottom: 0.5em;
+      }
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}
