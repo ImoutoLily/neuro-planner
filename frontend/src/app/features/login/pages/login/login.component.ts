@@ -4,6 +4,7 @@ import {MatInput} from "@angular/material/input";
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatButton} from "@angular/material/button";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {LiveErrorStateMatcher} from "../../../../shared/validators/live-error-state-matcher";
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,9 @@ export class LoginComponent {
     email: new FormControl("", [Validators.required, Validators.email]),
     password: new FormControl("", [Validators.required, Validators.minLength(8)])
   });
+
+  emailMatcher = new LiveErrorStateMatcher();
+  passwordMatcher = new LiveErrorStateMatcher();
 
   login(): void {
     console.warn("NOT IMPLEMENTED");

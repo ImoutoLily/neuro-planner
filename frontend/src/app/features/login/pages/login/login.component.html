@@ -6,7 +6,7 @@
     <form class="login-form" novalidate [formGroup]="loginForm" (ngSubmit)="login()">
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input type="email" placeholder="Enter your email" matNativeControl formControlName="email">
+        <input type="email" placeholder="Enter your email" matNativeControl formControlName="email" [errorStateMatcher]="emailMatcher">
         @if (loginForm.controls.email.hasError("email") && !loginForm.controls.email.hasError("required")) {
           <mat-error>Please enter a valid email address</mat-error>
         }
@@ -16,10 +16,7 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input type="password" placeholder="Enter your password" matInput formControlName="password">
-        @if (loginForm.controls.password.hasError("minlength") && !loginForm.controls.password.hasError("required")) {
-          <mat-error>Password must be at least 8 characters</mat-error>
-        }
+        <input type="password" placeholder="Enter your password" matInput formControlName="password" [errorStateMatcher]="passwordMatcher">
         @if (loginForm.controls.password.hasError("required")) {
           <mat-error>Password is required</mat-error>
         }
