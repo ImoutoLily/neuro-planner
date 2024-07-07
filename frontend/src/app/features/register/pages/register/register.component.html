@@ -23,7 +23,7 @@
         @if (registerForm.controls.password.hasError("required")) {
           <mat-error>Password is required</mat-error>
         } @else if (registerForm.controls.password.hasError("length")) {
-          <mat-error>Password must be between 12 and 128 characters</mat-error>
+          <mat-error>Password must be between {{ environment.passwordMinLength }} and {{ environment.passwordMaxLength }} characters</mat-error>
         }
       </mat-form-field>
       <button mat-flat-button [disabled]="!registerForm.valid">Register</button>

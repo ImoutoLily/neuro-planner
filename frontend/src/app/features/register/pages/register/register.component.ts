@@ -12,6 +12,7 @@ import {LiveErrorStateMatcher} from "@shared/validators/live-error-state-matcher
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {lengthRangeValidator} from "@shared/validators/custom-validators";
+import { environment } from "@environments/environment";
 
 @Component({
   selector: 'app-register',
@@ -37,7 +38,8 @@ import {lengthRangeValidator} from "@shared/validators/custom-validators";
 export class RegisterComponent {
   registerForm = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
-    password: new FormControl("", [Validators.required, lengthRangeValidator(12, 128)])
+    password: new FormControl("", [Validators.required,
+      lengthRangeValidator(environment.passwordMinLength, environment.passwordMaxLength)])
   });
 
   showPassword = false;
@@ -48,4 +50,6 @@ export class RegisterComponent {
   register(): void {
     console.warn("NOT IMPLEMENTED");
   }
+
+  protected readonly environment = environment;
 }
