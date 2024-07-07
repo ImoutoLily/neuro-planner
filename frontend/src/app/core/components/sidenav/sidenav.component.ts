@@ -9,6 +9,7 @@ import {MatIcon} from "@angular/material/icon";
 import {NgIf} from "@angular/common";
 import {ToolbarComponent} from "../toolbar/toolbar.component";
 import {MatDivider} from "@angular/material/divider";
+import {RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
   selector: 'app-sidenav',
@@ -22,7 +23,9 @@ import {MatDivider} from "@angular/material/divider";
     MatSidenavContent,
     ToolbarComponent,
     MatAnchor,
-    MatDivider
+    MatDivider,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss'

@@ -1,30 +1,30 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="push" [autoFocus]="false">
+  <mat-sidenav #sidenav mode="push" role="navigation" [autoFocus]="false">
     <div class="links">
-      <a mat-button href="#" target="_blank">
+      <a mat-button routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">
         <mat-icon>home</mat-icon>
         Home
       </a>
-      <a mat-button href="#" target="_blank">
+      <a mat-button routerLink="/todo" routerLinkActive="active" ariaCurrentWhenActive="page">
         <mat-icon>check</mat-icon>
         Todo
       </a>
-      <a mat-button href="#" target="_blank">
+      <a mat-button routerLink="/notes" routerLinkActive="active" ariaCurrentWhenActive="page">
         <mat-icon>notes</mat-icon>
         Notes
       </a>
-      <a mat-button href="#" target="_blank">
+      <a mat-button routerLink="/schedule" routerLinkActive="active" ariaCurrentWhenActive="page">
         <mat-icon>schedule</mat-icon>
         Schedule
       </a>
     </div>
     <mat-divider></mat-divider>
     <div class="links">
-      <a mat-button href="#" target="_blank">
+      <a mat-button routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">
         <mat-icon>login</mat-icon>
         Login
       </a>
-      <a mat-button href="#" target="_blank">
+      <a mat-button routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">
         <mat-icon>person_add</mat-icon>
         Register
       </a>
