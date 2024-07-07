@@ -17,7 +17,7 @@
       <mat-form-field>
         <mat-label>Password</mat-label>
         <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="Enter your password" matInput formControlName="password" [errorStateMatcher]="passwordMatcher">
-        <button type="button" matSuffix mat-icon-button (click)="showPassword = !showPassword">
+        <button type="button" mat-icon-button matSuffix (click)="showPassword = !showPassword">
           <mat-icon>{{ showPassword ? "visibility" : "visibility_off" }}</mat-icon>
         </button>
         @if (registerForm.controls.password.hasError("required")) {
