@@ -24,11 +24,11 @@ mat-sidenav {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
 
-.links > a {
-  margin: 0.3em 0;
-  font-size: 1.2em;
+  > a {
+    margin: 0.3em 0;
+    font-size: 1.2em;
+  }
 }
 
 .active {

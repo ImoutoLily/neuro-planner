@@ -1,0 +1,22 @@
+mat-card {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+// TODO: global style?
+mat-card-header {
+  margin-bottom: 1em;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+
+  mat-form-field {
+    margin-bottom: 0.5em;
+  }
+}
+
+.login-button {
+  width: 100%;
+}
