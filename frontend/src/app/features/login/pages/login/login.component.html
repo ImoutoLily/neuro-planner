@@ -24,6 +24,9 @@
           <mat-error>Password is required</mat-error>
         }
       </mat-form-field>
+      <button class="forgot-password-button" mat-button [disabled]="!loginForm.controls.email.valid" (click)="resetPassword()">
+        Forgot password
+      </button>
       <button mat-flat-button [disabled]="!loginForm.valid">Login</button>
     </form>
   </mat-card-content>

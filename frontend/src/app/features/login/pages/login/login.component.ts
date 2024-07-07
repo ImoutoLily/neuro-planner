@@ -46,4 +46,8 @@ export class LoginComponent {
   login(): void {
     console.warn("NOT IMPLEMENTED");
   }
+
+  resetPassword(): void {
+    console.warn("NOT IMPLEMENTED");
+  }
 }
