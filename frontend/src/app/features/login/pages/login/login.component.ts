@@ -4,8 +4,9 @@ import {MatInput} from "@angular/material/input";
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {LiveErrorStateMatcher} from "../../../../shared/validators/live-error-state-matcher";
+import {LiveErrorStateMatcher} from "@shared/validators/live-error-state-matcher";
 import {MatIcon} from "@angular/material/icon";
+import {lengthRangeValidator} from "@shared/validators/custom-validators";
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ import {MatIcon} from "@angular/material/icon";
 export class LoginComponent {
   loginForm = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
-    password: new FormControl("", [Validators.required, Validators.minLength(12)])
+    password: new FormControl("", [Validators.required, lengthRangeValidator(12, 128)])
   });
 
   showPassword = false;
