@@ -1,1 +1,32 @@
-<p>register works!</p>
+<mat-card appearance="outlined" class="form-card">
+  <mat-card-header>
+    <mat-card-title>Register</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form novalidate [formGroup]="registerForm" (ngSubmit)="register()">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email" placeholder="Enter your email" matInput formControlName="email" [errorStateMatcher]="emailMatcher">
+        @if (registerForm.controls.email.hasError("email") && !registerForm.controls.email.hasError("required")) {
+          <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (registerForm.controls.email.hasError("required")) {
+          <mat-error>Email is required</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="Enter your password" matInput formControlName="password" [errorStateMatcher]="passwordMatcher">
+        <button type="button" matSuffix mat-icon-button (click)="showPassword = !showPassword">
+          <mat-icon>{{ showPassword ? "visibility" : "visibility_off" }}</mat-icon>
+        </button>
+        @if (registerForm.controls.password.hasError("required")) {
+          <mat-error>Password is required</mat-error>
+        } @else if (registerForm.controls.password.hasError("length")) {
+          <mat-error>Password must be between 12 and 128 characters</mat-error>
+        }
+      </mat-form-field>
+      <button mat-flat-button [disabled]="!registerForm.valid">Register</button>
+    </form>
+  </mat-card-content>
+</mat-card>

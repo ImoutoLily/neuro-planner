@@ -3,10 +3,10 @@
     <mat-card-title>Login</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form class="login-form" novalidate [formGroup]="loginForm" (ngSubmit)="login()">
+    <form novalidate [formGroup]="loginForm" (ngSubmit)="login()">
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input type="email" placeholder="Enter your email" matNativeControl formControlName="email" [errorStateMatcher]="emailMatcher">
+        <input type="email" placeholder="Enter your email" matInput formControlName="email" [errorStateMatcher]="emailMatcher">
         @if (loginForm.controls.email.hasError("email") && !loginForm.controls.email.hasError("required")) {
           <mat-error>Please enter a valid email address</mat-error>
         }
@@ -21,7 +21,7 @@
           <mat-error>Password is required</mat-error>
         }
       </mat-form-field>
-      <button class="login-button" mat-flat-button [disabled]="!loginForm.valid">Login</button>
+      <button mat-flat-button [disabled]="!loginForm.valid">Login</button>
     </form>
   </mat-card-content>
 </mat-card>
