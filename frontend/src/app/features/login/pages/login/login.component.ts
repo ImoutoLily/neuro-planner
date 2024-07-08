@@ -8,6 +8,7 @@ import {LiveErrorStateMatcher} from "@shared/validators/live-error-state-matcher
 import {MatIcon} from "@angular/material/icon";
 import {lengthRangeValidator} from "@shared/validators/custom-validators";
 import { environment } from "@environments/environment";
+import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,8 @@ import { environment } from "@environments/environment";
     MatError,
     MatIconButton,
     MatSuffix,
-    MatIcon
+    MatIcon,
+    MatTooltip
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'

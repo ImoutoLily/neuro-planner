@@ -6,7 +6,7 @@
     <form novalidate [formGroup]="registerForm" (ngSubmit)="register()">
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input type="email" placeholder="Enter your email" matInput formControlName="email" [errorStateMatcher]="emailMatcher">
+        <input type="email" id="username" autocomplete="username" placeholder="Enter your email" matInput formControlName="email" [errorStateMatcher]="emailMatcher">
         @if (registerForm.controls.email.hasError("required")) {
           <mat-error>Email is required</mat-error>
         }
@@ -16,9 +16,9 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="Enter your password" matInput formControlName="password" [errorStateMatcher]="passwordMatcher">
+        <input type="{{ showPassword ? 'text' : 'password' }}" id="new-password" autocomplete="new-password" placeholder="Enter your password" matInput formControlName="password" [errorStateMatcher]="passwordMatcher">
         <button type="button" mat-icon-button matSuffix (click)="showPassword = !showPassword">
-          <mat-icon>{{ showPassword ? "visibility" : "visibility_off" }}</mat-icon>
+          <mat-icon matTooltip="Show password">{{ showPassword ? "visibility" : "visibility_off" }}</mat-icon>
         </button>
         @if (registerForm.controls.password.hasError("required")) {
           <mat-error>Password is required</mat-error>

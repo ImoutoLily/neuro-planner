@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -31,3 +30,10 @@ mat-card.form-card {
     }
   }
 }
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--mat-app-text-color) !important; 
+  caret-color: var(--mat-app-text-color) !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+

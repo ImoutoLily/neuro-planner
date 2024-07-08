@@ -13,6 +13,7 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {lengthRangeValidator} from "@shared/validators/custom-validators";
 import { environment } from "@environments/environment";
+import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-register',
@@ -30,7 +31,8 @@ import { environment } from "@environments/environment";
     MatCardHeader,
     MatIconButton,
     MatIcon,
-    MatSuffix
+    MatSuffix,
+    MatTooltip
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
