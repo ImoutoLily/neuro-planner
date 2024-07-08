@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+$theme: mat.define-theme();
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -32,8 +36,11 @@ mat-card.form-card {
 }
 
 input:-webkit-autofill {
-  -webkit-text-fill-color: var(--mat-app-text-color) !important; 
+  -webkit-text-fill-color: var(--mat-app-text-color) !important;
   caret-color: var(--mat-app-text-color) !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
+.mdc-text-field--filled:has(input:-webkit-autofill) {
+  background-color: mat.get-theme-color($theme, secondary, 25);
+}
