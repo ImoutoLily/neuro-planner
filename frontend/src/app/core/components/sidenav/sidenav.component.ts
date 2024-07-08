@@ -1,15 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {
   MatSidenav,
   MatSidenavContainer,
   MatSidenavContent
 } from "@angular/material/sidenav";
-import {MatAnchor, MatIconButton} from "@angular/material/button";
+import {MatAnchor, MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {NgIf} from "@angular/common";
 import {ToolbarComponent} from "../toolbar/toolbar.component";
 import {MatDivider} from "@angular/material/divider";
 import {RouterLink, RouterLinkActive} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {LogoutDialogComponent} from "@core/components/logout-dialog/logout-dialog.component";
 
 @Component({
   selector: 'app-sidenav',
@@ -25,10 +27,22 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
     MatAnchor,
     MatDivider,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    MatButton
   ],
   templateUrl: './sidenav.component.html',
-  styleUrl: './sidenav.component.scss'
+  styleUrl: './sidenav.component.scss',
 })
 export class SidenavComponent {
+  readonly dialog = inject(MatDialog);
+
+  openLogoutDialog(): void {
+    const dialogRef = this.dialog.open(LogoutDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.warn("NOT IMPLEMENTED");
+      }
+    });
+  }
 }
