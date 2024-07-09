@@ -27,6 +27,7 @@ import {
   MatStartDate
 } from "@angular/material/datepicker";
 import {provideNativeDateAdapter} from "@angular/material/core";
+import {MatCheckbox} from "@angular/material/checkbox";
 
 @Component({
   selector: 'app-todo',
@@ -61,7 +62,8 @@ import {provideNativeDateAdapter} from "@angular/material/core";
     MatDateRangePicker,
     MatStartDate,
     MatEndDate,
-    MatHint
+    MatHint,
+    MatCheckbox
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './todo.component.html',
