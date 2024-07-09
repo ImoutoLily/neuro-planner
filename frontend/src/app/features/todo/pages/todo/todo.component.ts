@@ -14,6 +14,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatFormField, MatLabel, MatPrefix} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
+import {MatSort, MatSortHeader} from "@angular/material/sort";
 
 @Component({
   selector: 'app-todo',
@@ -35,7 +36,9 @@ import {MatInput} from "@angular/material/input";
     MatIcon,
     MatLabel,
     MatPrefix,
-    MatInput
+    MatInput,
+    MatSortHeader,
+    MatSort
   ],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
@@ -56,14 +59,21 @@ export class TodoComponent implements AfterViewInit {
 
   // @ts-ignore
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  // @ts-ignore
+  @ViewChild(MatSort) sort: MatSort;
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   filter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
 
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
