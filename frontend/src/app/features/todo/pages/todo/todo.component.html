@@ -1,8 +1,23 @@
-<mat-form-field id="search">
-  <mat-label>Search</mat-label>
-  <mat-icon matPrefix>search</mat-icon>
-  <input type="text" matInput (keyup)="filter($event)">
-</mat-form-field>
+<div id="search-refinement" class="mat-elevation-z8">
+  <div class="row">
+    <mat-form-field id="search">
+      <mat-label>Search</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input type="text" matInput (keyup)="filter($event)">
+    </mat-form-field>
+    <mat-button-toggle-group hideSingleSelectionIndicator [(ngModel)]="displayTodoType" aria-label="Filter todo type">
+      <mat-button-toggle [value]="TodoStatus.All" matTooltip="Show all todos">
+        <mat-icon>list</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle [value]="TodoStatus.Complete" matTooltip="Show complete todos">
+        <mat-icon>radio_button_checked</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle [value]="TodoStatus.Incomplete" matTooltip="Show incomplete todos">
+        <mat-icon>radio_button_unchecked</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort matSortActive="dueDate" matSortDisableClear matSortDirection="asc">
     <ng-container matColumnDef="text">

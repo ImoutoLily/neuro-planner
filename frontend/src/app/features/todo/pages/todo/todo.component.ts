@@ -15,6 +15,10 @@ import {MatFormField, MatLabel, MatPrefix} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
+import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
+import {TodoStatus} from "@features/todo/models/todo-status";
+import {FormsModule} from "@angular/forms";
+import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-todo',
@@ -38,7 +42,11 @@ import {MatSort, MatSortHeader} from "@angular/material/sort";
     MatPrefix,
     MatInput,
     MatSortHeader,
-    MatSort
+    MatSort,
+    MatButtonToggleGroup,
+    MatButtonToggle,
+    FormsModule,
+    MatTooltip
   ],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
@@ -62,6 +70,8 @@ export class TodoComponent implements AfterViewInit {
   // @ts-ignore
   @ViewChild(MatSort) sort: MatSort;
 
+  displayTodoType = TodoStatus.All;
+
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -76,4 +86,6 @@ export class TodoComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  protected readonly TodoStatus = TodoStatus;
 }
