@@ -11,7 +11,7 @@ import {
 import {TodoItem} from "@shared/models/todo-item";
 import {DatePipe} from "@angular/common";
 import {MatPaginator} from "@angular/material/paginator";
-import {MatFormField, MatLabel, MatPrefix} from "@angular/material/form-field";
+import {MatFormField, MatHint, MatLabel, MatPrefix, MatSuffix} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
@@ -19,6 +19,14 @@ import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-to
 import {TodoStatus} from "@features/todo/models/todo-status";
 import {FormsModule} from "@angular/forms";
 import {MatTooltip} from "@angular/material/tooltip";
+import {
+  MatDatepickerToggle,
+  MatDateRangeInput,
+  MatDateRangePicker,
+  MatEndDate,
+  MatStartDate
+} from "@angular/material/datepicker";
+import {provideNativeDateAdapter} from "@angular/material/core";
 
 @Component({
   selector: 'app-todo',
@@ -46,8 +54,16 @@ import {MatTooltip} from "@angular/material/tooltip";
     MatButtonToggleGroup,
     MatButtonToggle,
     FormsModule,
-    MatTooltip
+    MatTooltip,
+    MatDateRangeInput,
+    MatDatepickerToggle,
+    MatSuffix,
+    MatDateRangePicker,
+    MatStartDate,
+    MatEndDate,
+    MatHint
   ],
+  providers: [provideNativeDateAdapter()],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })

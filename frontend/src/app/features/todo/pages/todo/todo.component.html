@@ -5,6 +5,16 @@
       <mat-icon matPrefix>search</mat-icon>
       <input type="text" matInput (keyup)="filter($event)">
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter due date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date">
+        <input matEndDate placeholder="End date">
+      </mat-date-range-input>
+      <mat-hint>DD/MM/YYYY - DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
     <mat-button-toggle-group hideSingleSelectionIndicator [(ngModel)]="displayTodoType" aria-label="Filter todo type">
       <mat-button-toggle [value]="TodoStatus.All" matTooltip="Show all todos">
         <mat-icon>list</mat-icon>
@@ -18,7 +28,7 @@
     </mat-button-toggle-group>
   </div>
 </div>
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8 table-container">
   <table mat-table [dataSource]="dataSource" matSort matSortActive="dueDate" matSortDisableClear matSortDirection="asc">
     <ng-container matColumnDef="text">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Text</th>

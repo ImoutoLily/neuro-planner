@@ -5,6 +5,8 @@
 #search-refinement {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1em;
+  padding: 0.5em
 }
 
 .row {
@@ -15,4 +17,27 @@
   > *:not(:last-child) {
     margin-right: 0.5em;
   }
+}
+
+@media (max-width: 750px) {
+  #search-refinement {
+    align-items: flex-start;
+  }
+
+  .row {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+
+    > *:not(:last-child) {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 0.5em;
+    }
+  }
+}
+
+.table-container {
+  min-width: 270px;
+  overflow: auto;
 }
