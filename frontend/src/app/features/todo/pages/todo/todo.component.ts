@@ -68,7 +68,7 @@ import {provideNativeDateAdapter} from "@angular/material/core";
   styleUrl: './todo.component.scss'
 })
 export class TodoComponent implements AfterViewInit {
-  displayColumns = ["text", "completed", "createdDate", "dueDate"];
+  displayColumns = ["completed", "text", "dueDate", "createdDate"];
   dataSource = new MatTableDataSource<TodoItem>([
     { text: "Finish NeuroPlanner", completed: true, createdDate: new Date(), dueDate: new Date(2024, 10, 4) },
     { text: "Write NeuroPlanner documentation", completed: false, createdDate: new Date(), dueDate: new Date(2024, 9, 5) },
