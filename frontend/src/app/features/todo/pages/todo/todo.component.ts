@@ -29,6 +29,7 @@ import {
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatButton} from "@angular/material/button";
+import {MatChip, MatChipAvatar, MatChipSet} from "@angular/material/chips";
 
 @Component({
   selector: 'app-todo',
@@ -65,7 +66,10 @@ import {MatButton} from "@angular/material/button";
     MatEndDate,
     MatHint,
     MatCheckbox,
-    MatButton
+    MatButton,
+    MatChipSet,
+    MatChip,
+    MatChipAvatar
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './todo.component.html',

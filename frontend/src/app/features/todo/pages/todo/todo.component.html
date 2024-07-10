@@ -39,7 +39,17 @@
     <ng-container matColumnDef="completed">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
       <td mat-cell *matCellDef="let item">
-        <mat-checkbox [checked]="item.completed"></mat-checkbox>
+        <mat-chip-set aria-label="Todo status">
+          @if (item.completed) {
+            <mat-chip highlighted>
+              <mat-icon matChipAvatar>check</mat-icon>
+              Complete
+            </mat-chip>
+          }
+          @else {
+            <mat-chip>Incomplete</mat-chip>
+          }
+        </mat-chip-set>
       </td>
     </ng-container>
     <ng-container matColumnDef="text">
