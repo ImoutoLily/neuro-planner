@@ -29,11 +29,18 @@
     width: 100%;
     align-items: flex-start;
 
-    > *:not(:last-child) {
+    > mat-form-field {
       width: 100%;
       margin-right: 0;
+    }
+
+    > *:not(:last-child) {
       margin-bottom: 0.5em;
     }
+  }
+
+  .row:not(:last-child) {
+    margin-bottom: 0.5em;
   }
 }
 
