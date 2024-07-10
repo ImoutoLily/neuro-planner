@@ -28,9 +28,10 @@ import {
 } from "@angular/material/datepicker";
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {MatCheckbox} from "@angular/material/checkbox";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatChip, MatChipAvatar, MatChipSet} from "@angular/material/chips";
 import {SelectionModel} from "@angular/cdk/collections";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
   selector: 'app-todo',
@@ -70,14 +71,18 @@ import {SelectionModel} from "@angular/cdk/collections";
     MatButton,
     MatChipSet,
     MatChip,
-    MatChipAvatar
+    MatChipAvatar,
+    MatIconButton,
+    MatMenu,
+    MatMenuTrigger,
+    MatMenuItem
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
 export class TodoComponent implements AfterViewInit {
-  displayColumns = ["selected", "completed", "text", "dueDate", "createdDate"];
+  displayColumns = ["selected", "completed", "text", "dueDate", "createdDate", "actions"];
   dataSource = new MatTableDataSource<TodoItem>([
     { text: "Finish NeuroPlanner", completed: true, createdDate: new Date(), dueDate: new Date(2024, 10, 4) },
     { text: "Write NeuroPlanner documentation", completed: false, createdDate: new Date(), dueDate: new Date(2024, 9, 5) },

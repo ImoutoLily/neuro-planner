@@ -45,12 +45,12 @@
           [aria-label]="selectAriaLabel()">
         </mat-checkbox>
       </th>
-      <td mat-cell *matCellDef="let row">
+      <td mat-cell *matCellDef="let item">
         <mat-checkbox
           (click)="$event.stopPropagation()"
-          (change)="$event ? selection.toggle(row) : null"
-          [checked]="selection.isSelected(row)"
-          [aria-label]="selectAriaLabel(row)">
+          (change)="$event ? selection.toggle(item) : null"
+          [checked]="selection.isSelected(item)"
+          [aria-label]="selectAriaLabel(item)">
         </mat-checkbox>
       </td>
     </ng-container>
@@ -81,6 +81,28 @@
     <ng-container matColumnDef="createdDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Created</th>
       <td mat-cell *matCellDef="let item">{{ item.createdDate | date }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let item">
+        <button mat-icon-button [matMenuTriggerFor]="actionsMenu" [attr.aria-label]="'Action menu for ' + item.text">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #actionsMenu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>check</mat-icon>
+            Complete
+          </button>
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            Edit
+          </button>
+          <button mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            Delete
+          </button>
+        </mat-menu>
+      </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
