@@ -30,6 +30,7 @@ import {provideNativeDateAdapter} from "@angular/material/core";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatButton} from "@angular/material/button";
 import {MatChip, MatChipAvatar, MatChipSet} from "@angular/material/chips";
+import {SelectionModel} from "@angular/cdk/collections";
 
 @Component({
   selector: 'app-todo',
@@ -76,7 +77,7 @@ import {MatChip, MatChipAvatar, MatChipSet} from "@angular/material/chips";
   styleUrl: './todo.component.scss'
 })
 export class TodoComponent implements AfterViewInit {
-  displayColumns = ["completed", "text", "dueDate", "createdDate"];
+  displayColumns = ["selected", "completed", "text", "dueDate", "createdDate"];
   dataSource = new MatTableDataSource<TodoItem>([
     { text: "Finish NeuroPlanner", completed: true, createdDate: new Date(), dueDate: new Date(2024, 10, 4) },
     { text: "Write NeuroPlanner documentation", completed: false, createdDate: new Date(), dueDate: new Date(2024, 9, 5) },
@@ -88,6 +89,7 @@ export class TodoComponent implements AfterViewInit {
     { text: "Finish Rust project", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
     { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
   ]);
+  selection = new SelectionModel<TodoItem>(true, []);
 
   // @ts-ignore
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -99,6 +101,27 @@ export class TodoComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  isAllSelected(): boolean {
+    return this.selection.selected.length === this.dataSource.data.length;
+  }
+
+  toggleAllSelect() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource.data);
+  }
+
+  selectAriaLabel(row?: TodoItem): string {
+    if (!row) {
+      return `${this.isAllSelected() ? "deselect" : "select"} all`;
+    }
+
+    return `${this.selection.isSelected(row) ? "deselect" : "select"} row ${row.text + 1}`;
   }
 
   filter(event: Event) {
