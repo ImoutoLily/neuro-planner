@@ -32,6 +32,10 @@
       <mat-icon>add</mat-icon>
       Create
     </button>
+    <button mat-button [disabled]="selection.isEmpty()">
+      <mat-icon>delete</mat-icon>
+      Delete
+    </button>
   </div>
 </div>
 <div class="mat-elevation-z8 table-container">
