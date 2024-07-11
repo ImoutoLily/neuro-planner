@@ -1,5 +1,5 @@
 export interface TodoItem {
-  text: string,
+  description: string,
   completed: boolean,
   createdDate: Date,
   dueDate: Date

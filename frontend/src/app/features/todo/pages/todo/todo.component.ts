@@ -82,26 +82,26 @@ import {MatSelect} from "@angular/material/select";
   styleUrl: './todo.component.scss'
 })
 export class TodoComponent implements AfterViewInit {
-  displayColumns = ["selected", "text", "completed", "dueDate", "createdDate", "actions"];
+  displayColumns = ["selected", "description", "completed", "dueDate", "createdDate", "actions"];
   dataSource = new MatTableDataSource<TodoItem>([
-    { text: "Finish NeuroPlanner", completed: true, createdDate: new Date(), dueDate: new Date(2024, 10, 4) },
-    { text: "Write NeuroPlanner documentation", completed: false, createdDate: new Date(), dueDate: new Date(2024, 9, 5) },
-    { text: "Upgrade packages", completed: true, createdDate: new Date(), dueDate: new Date(2024, 10, 16) },
-    { text: "Set up computer", completed: false, createdDate: new Date(), dueDate: new Date(2024, 8, 26) },
-    { text: "Get more bunnies", completed: false, createdDate: new Date(), dueDate: new Date(2024, 11, 10) },
-    { text: "Learn NixOS", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 1) },
-    { text: "Get more books", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 1) },
-    { text: "Finish Rust project", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
-    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
-    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
-    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
-    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
-    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
-    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
-    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
-    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
-    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
-    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { description: "Finish NeuroPlanner", completed: true, createdDate: new Date(), dueDate: new Date(2024, 10, 4) },
+    { description: "Write NeuroPlanner documentation", completed: false, createdDate: new Date(), dueDate: new Date(2024, 9, 5) },
+    { description: "Upgrade packages", completed: true, createdDate: new Date(), dueDate: new Date(2024, 10, 16) },
+    { description: "Set up computer", completed: false, createdDate: new Date(), dueDate: new Date(2024, 8, 26) },
+    { description: "Get more bunnies", completed: false, createdDate: new Date(), dueDate: new Date(2024, 11, 10) },
+    { description: "Learn NixOS", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 1) },
+    { description: "Get more books", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 1) },
+    { description: "Finish Rust project", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { description: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { description: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { description: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { description: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { description: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { description: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { description: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { description: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { description: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { description: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
 
   ]);
   selection = new SelectionModel<TodoItem>(true, []);
@@ -136,7 +136,7 @@ export class TodoComponent implements AfterViewInit {
       return `${this.isAllSelected() ? "deselect" : "select"} all`;
     }
 
-    return `${this.selection.isSelected(row) ? "deselect" : "select"} row ${row.text + 1}`;
+    return `${this.selection.isSelected(row) ? "deselect" : "select"} row ${row.description + 1}`;
   }
 
   filter(event: Event) {
