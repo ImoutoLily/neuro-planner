@@ -1,4 +1,4 @@
-<div id="search-refinement" class="mat-elevation-z8">
+<div id="table-actions" class="mat-elevation-z8">
   <div class="row">
     <mat-form-field id="search">
       <mat-label>Search</mat-label>
@@ -109,7 +109,7 @@
         </mat-menu>
       </td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayColumns; sticky: true"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayColumns;"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25]" [pageSize]="10" showFirstLastButtons aria-label="Show page of todo list">

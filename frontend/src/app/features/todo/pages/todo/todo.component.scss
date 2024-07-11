@@ -2,7 +2,7 @@
   flex-grow: 1;
 }
 
-#search-refinement {
+#table-actions {
   display: flex;
   flex-direction: column;
   margin-bottom: 1em;
@@ -46,5 +46,6 @@
 
 .table-container {
   min-width: 270px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
