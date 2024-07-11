@@ -6,7 +6,7 @@
       <input type="text" matInput (keyup)="filter($event)">
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Filter due date</mat-label>
+      <mat-label>Due date</mat-label>
       <mat-date-range-input [rangePicker]="picker">
         <input matStartDate placeholder="Start date">
         <input matEndDate placeholder="End date">
@@ -15,17 +15,14 @@
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
-    <mat-button-toggle-group hideSingleSelectionIndicator [(ngModel)]="displayTodoType" aria-label="Filter todo type">
-      <mat-button-toggle [value]="TodoStatus.All" matTooltip="Show all todos">
-        <mat-icon>list</mat-icon>
-      </mat-button-toggle>
-      <mat-button-toggle [value]="TodoStatus.Complete" matTooltip="Show complete todos">
-        <mat-icon>radio_button_checked</mat-icon>
-      </mat-button-toggle>
-      <mat-button-toggle [value]="TodoStatus.Incomplete" matTooltip="Show incomplete todos">
-        <mat-icon>radio_button_unchecked</mat-icon>
-      </mat-button-toggle>
-    </mat-button-toggle-group>
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="displayTodoType">
+        <mat-option [value]="TodoStatus.All">All</mat-option>
+        <mat-option [value]="TodoStatus.Complete">Complete</mat-option>
+        <mat-option [value]="TodoStatus.Incomplete">Incomplete</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
   <div class="row">
     <button mat-button>
@@ -108,7 +105,7 @@
         </mat-menu>
       </td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25]" [pageSize]="10" showFirstLastButtons aria-label="Show page of todo list">

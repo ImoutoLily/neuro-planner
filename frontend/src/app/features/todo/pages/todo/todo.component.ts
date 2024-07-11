@@ -15,7 +15,6 @@ import {MatFormField, MatHint, MatLabel, MatPrefix, MatSuffix} from "@angular/ma
 import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
-import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
 import {TodoStatus} from "@features/todo/models/todo-status";
 import {FormsModule} from "@angular/forms";
 import {MatTooltip} from "@angular/material/tooltip";
@@ -26,12 +25,13 @@ import {
   MatEndDate,
   MatStartDate
 } from "@angular/material/datepicker";
-import {provideNativeDateAdapter} from "@angular/material/core";
+import {MatOption, provideNativeDateAdapter} from "@angular/material/core";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatChip, MatChipAvatar, MatChipSet} from "@angular/material/chips";
 import {SelectionModel} from "@angular/cdk/collections";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {MatSelect} from "@angular/material/select";
 
 @Component({
   selector: 'app-todo',
@@ -56,8 +56,6 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
     MatInput,
     MatSortHeader,
     MatSort,
-    MatButtonToggleGroup,
-    MatButtonToggle,
     FormsModule,
     MatTooltip,
     MatDateRangeInput,
@@ -75,7 +73,9 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
     MatIconButton,
     MatMenu,
     MatMenuTrigger,
-    MatMenuItem
+    MatMenuItem,
+    MatSelect,
+    MatOption
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './todo.component.html',
@@ -93,6 +93,16 @@ export class TodoComponent implements AfterViewInit {
     { text: "Get more books", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 1) },
     { text: "Finish Rust project", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
     { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+    { text: "Write CLI chess app", completed: false, createdDate: new Date(), dueDate: new Date(2024, 10, 30) },
+
   ]);
   selection = new SelectionModel<TodoItem>(true, []);
 
