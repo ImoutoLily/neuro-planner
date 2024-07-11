@@ -33,7 +33,7 @@
       <mat-icon>check</mat-icon>
       Complete
     </button>
-    <button mat-button [disabled]="selection.isEmpty()">
+    <button mat-button [disabled]="selection.isEmpty()" (click)="openDeleteDialog()">
       <mat-icon>delete</mat-icon>
       Delete
     </button>
@@ -72,8 +72,7 @@
               <mat-icon matChipAvatar>check</mat-icon>
               Complete
             </mat-chip>
-          }
-          @else {
+          } @else {
             <mat-chip>Incomplete</mat-chip>
           }
         </mat-chip-set>
@@ -102,7 +101,7 @@
             <mat-icon>edit</mat-icon>
             Edit
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="openDeleteDialog(item)">
             <mat-icon>delete</mat-icon>
             Delete
           </button>

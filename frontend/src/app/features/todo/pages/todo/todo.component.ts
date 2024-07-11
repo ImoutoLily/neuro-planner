@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, inject, ViewChild} from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -32,6 +32,8 @@ import {MatChip, MatChipAvatar, MatChipSet} from "@angular/material/chips";
 import {SelectionModel} from "@angular/cdk/collections";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {MatSelect} from "@angular/material/select";
+import {MatDialog} from "@angular/material/dialog";
+import {DeleteDialogComponent} from "@features/todo/components/delete-dialog/delete-dialog.component";
 
 @Component({
   selector: 'app-todo',
@@ -82,6 +84,8 @@ import {MatSelect} from "@angular/material/select";
   styleUrl: './todo.component.scss'
 })
 export class TodoComponent implements AfterViewInit {
+  readonly dialog = inject(MatDialog);
+
   displayColumns = ["selected", "description", "completed", "dueDate", "createdDate", "actions"];
   dataSource = new MatTableDataSource<TodoItem>([
     { description: "Finish NeuroPlanner", completed: true, createdDate: new Date(), dueDate: new Date(2024, 10, 4) },
@@ -112,6 +116,8 @@ export class TodoComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   displayTodoType = TodoStatus.All;
+
+  protected readonly TodoStatus = TodoStatus;
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -149,5 +155,17 @@ export class TodoComponent implements AfterViewInit {
     }
   }
 
-  protected readonly TodoStatus = TodoStatus;
+  openDeleteDialog(todo?: TodoItem) {
+    const todos = todo ? [todo] : this.selection.selected;
+
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: { todos: todos }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.warn("NOT IMPLEMENTED");
+      }
+    });
+  }
 }
