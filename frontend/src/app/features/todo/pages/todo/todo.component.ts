@@ -82,7 +82,7 @@ import {MatSelect} from "@angular/material/select";
   styleUrl: './todo.component.scss'
 })
 export class TodoComponent implements AfterViewInit {
-  displayColumns = ["selected", "completed", "text", "dueDate", "createdDate", "actions"];
+  displayColumns = ["selected", "text", "completed", "dueDate", "createdDate", "actions"];
   dataSource = new MatTableDataSource<TodoItem>([
     { text: "Finish NeuroPlanner", completed: true, createdDate: new Date(), dueDate: new Date(2024, 10, 4) },
     { text: "Write NeuroPlanner documentation", completed: false, createdDate: new Date(), dueDate: new Date(2024, 9, 5) },
