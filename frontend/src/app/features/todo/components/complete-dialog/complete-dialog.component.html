@@ -1,6 +1,10 @@
 <h2 mat-dialog-title>Complete todos</h2>
 <mat-dialog-content>
-  <p>Are you sure you want to complete {{ data.todos.length }} todos?</p>
+  @if (data.todos.length === 1) {
+    <p>Are you sure you want to complete '{{ data.todos[0].description }}'?</p>
+  } @else {
+    <p>Are you sure you want to complete {{ data.todos.length }} todos?</p>
+  }
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancel</button>
