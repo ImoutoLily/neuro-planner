@@ -125,6 +125,10 @@ export class TodoComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+  hasOnlyCompleteItemsSelected(): boolean {
+    return this.selection.selected.every(item => item.completed);
+  }
+
   isAllSelected(): boolean {
     return this.selection.selected.length === this.dataSource.data.length;
   }
