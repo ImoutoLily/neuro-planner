@@ -162,7 +162,7 @@ export class TodoComponent implements AfterViewInit {
 
   openCompleteDialog(): void {
     const dialogRef = this.dialog.open(CompleteDialogComponent, {
-      data: { todos: this.selection.selected }
+      data: { todos: this.selection.selected.filter(item => !item.completed) }
     });
 
     dialogRef.afterClosed().subscribe(result => {
