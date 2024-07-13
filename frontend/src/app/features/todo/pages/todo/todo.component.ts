@@ -34,6 +34,7 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {MatSelect} from "@angular/material/select";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteDialogComponent} from "@features/todo/components/delete-dialog/delete-dialog.component";
+import {CompleteDialogComponent} from "@features/todo/components/complete-dialog/complete-dialog.component";
 
 @Component({
   selector: 'app-todo',
@@ -128,7 +129,7 @@ export class TodoComponent implements AfterViewInit {
     return this.selection.selected.length === this.dataSource.data.length;
   }
 
-  toggleAllSelect() {
+  toggleAllSelect(): void {
     if (this.isAllSelected()) {
       this.selection.clear();
       return;
@@ -145,7 +146,7 @@ export class TodoComponent implements AfterViewInit {
     return `${this.selection.isSelected(row) ? "deselect" : "select"} row ${row.description + 1}`;
   }
 
-  filter(event: Event) {
+  filter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
 
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -155,7 +156,19 @@ export class TodoComponent implements AfterViewInit {
     }
   }
 
-  openDeleteDialog(todo?: TodoItem) {
+  openCompleteDialog(): void {
+    const dialogRef = this.dialog.open(CompleteDialogComponent, {
+      data: { todos: this.selection.selected }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.warn("NOT IMPLEMENTED");
+      }
+    });
+  }
+
+  openDeleteDialog(todo?: TodoItem): void {
     const todos = todo ? [todo] : this.selection.selected;
 
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
