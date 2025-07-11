@@ -17,7 +17,6 @@ import {MatInput} from "@angular/material/input";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
 import {TodoStatus} from "@features/todo/models/todo-status";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {MatTooltip} from "@angular/material/tooltip";
 import {
   MatDatepickerToggle,
   MatDateRangeInput,
@@ -126,7 +125,7 @@ export class TodoComponent implements OnInit, AfterViewInit {
   protected readonly TodoStatus = TodoStatus;
 
   ngOnInit(): void {
-    this.searchForm.valueChanges.subscribe(value => {
+    this.searchForm.valueChanges.subscribe(_ => {
       this.filter();
     });
   }
