@@ -1,29 +1,31 @@
 <div id="table-actions" class="mat-elevation-z8">
-  <div class="row">
-    <mat-form-field id="search">
-      <mat-label>Search</mat-label>
-      <mat-icon matPrefix>search</mat-icon>
-      <input type="text" matInput (keyup)="filter($event)">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Due date</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate placeholder="Start date">
-        <input matEndDate placeholder="End date">
-      </mat-date-range-input>
-      <mat-hint>DD/MM/YYYY - DD/MM/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Status</mat-label>
-      <mat-select [(ngModel)]="displayTodoType">
-        <mat-option [value]="TodoStatus.All">All</mat-option>
-        <mat-option [value]="TodoStatus.Complete">Complete</mat-option>
-        <mat-option [value]="TodoStatus.Incomplete">Incomplete</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+  <form novalidate [formGroup]="searchForm">
+    <div class="row">
+      <mat-form-field id="search">
+        <mat-label>Search</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input type="text" matInput formControlName="search">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Due date</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" formControlName="startDate">
+          <input matEndDate placeholder="End date" formControlName="endDate">
+        </mat-date-range-input>
+        <mat-hint>DD/MM/YYYY - DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option [value]="TodoStatus.All">All</mat-option>
+          <mat-option [value]="TodoStatus.Complete">Complete</mat-option>
+          <mat-option [value]="TodoStatus.Incomplete">Incomplete</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
   <div class="row">
     <button mat-button>
       <mat-icon>add</mat-icon>

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, inject, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -16,7 +16,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
 import {TodoStatus} from "@features/todo/models/todo-status";
-import {FormsModule} from "@angular/forms";
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatTooltip} from "@angular/material/tooltip";
 import {
   MatDatepickerToggle,
@@ -60,7 +60,6 @@ import {CompleteDialogComponent} from "@features/todo/components/complete-dialog
     MatSortHeader,
     MatSort,
     FormsModule,
-    MatTooltip,
     MatDateRangeInput,
     MatDatepickerToggle,
     MatSuffix,
@@ -78,14 +77,22 @@ import {CompleteDialogComponent} from "@features/todo/components/complete-dialog
     MatMenuTrigger,
     MatMenuItem,
     MatSelect,
-    MatOption
+    MatOption,
+    ReactiveFormsModule
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
-export class TodoComponent implements AfterViewInit {
+export class TodoComponent implements OnInit, AfterViewInit {
   readonly dialog = inject(MatDialog);
+
+  searchForm = new FormGroup({
+    search: new FormControl(""),
+    startDate: new FormControl(""),
+    endDate: new FormControl(""),
+    status: new FormControl(TodoStatus.All)
+  });
 
   displayColumns = ["selected", "description", "completed", "dueDate", "createdDate", "actions"];
   dataSource = new MatTableDataSource<TodoItem>([
@@ -116,9 +123,13 @@ export class TodoComponent implements AfterViewInit {
   // @ts-ignore
   @ViewChild(MatSort) sort: MatSort;
 
-  displayTodoType = TodoStatus.All;
-
   protected readonly TodoStatus = TodoStatus;
+
+  ngOnInit(): void {
+    this.searchForm.valueChanges.subscribe(value => {
+      this.filter();
+    });
+  }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -150,10 +161,10 @@ export class TodoComponent implements AfterViewInit {
     return `${this.selection.isSelected(row) ? "deselect" : "select"} row ${row.description + 1}`;
   }
 
-  filter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
+  filter(): void {
+    console.warn("Filter: Not implemented");
 
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // TODO: send GET to backend with filters to get matching new results
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
