@@ -4,9 +4,8 @@ import {
   MatSidenavContainer,
   MatSidenavContent
 } from "@angular/material/sidenav";
-import {MatAnchor, MatButton, MatIconButton} from "@angular/material/button";
+import {MatAnchor, MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
-import {NgIf} from "@angular/common";
 import {ToolbarComponent} from "../toolbar/toolbar.component";
 import {MatDivider} from "@angular/material/divider";
 import {RouterLink, RouterLinkActive} from "@angular/router";
@@ -18,9 +17,7 @@ import {LogoutDialogComponent} from "@core/components/logout-dialog/logout-dialo
   standalone: true,
   imports: [
     MatSidenavContainer,
-    MatIconButton,
     MatIcon,
-    NgIf,
     MatSidenav,
     MatSidenavContent,
     ToolbarComponent,

@@ -1,12 +1,75 @@
 import { Component } from '@angular/core';
+import {
+  MatNestedTreeNode,
+  MatTree, MatTreeNestedDataSource,
+  MatTreeNode,
+  MatTreeNodeDef, MatTreeNodeOutlet,
+  MatTreeNodeToggle
+} from "@angular/material/tree";
+import { NoteNode } from "@features/notes/models/note-node";
+import { MatButton } from "@angular/material/button";
+import { NestedTreeControl } from "@angular/cdk/tree";
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-notes',
   standalone: true,
-  imports: [],
+  imports: [
+    MatTree,
+    MatTreeNode,
+    MatTreeNodeDef,
+    MatNestedTreeNode,
+    MatTreeNodeToggle,
+    MatIcon,
+    MatTreeNodeOutlet,
+    MatButton,
+  ],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'
 })
 export class NotesComponent {
+  private readonly notes: NoteNode[] = [
+    {
+      fileName: "Rust",
+      children: [
+        { fileName: "Ownership" },
+        { fileName: "Projects" },
+      ]
+    },
+    {
+      fileName: "OpSec",
+      children: [
+        { fileName: "Networking" },
+        { fileName: "Active Directory" },
+        { fileName: "Apache" },
+        { fileName: "Penetration testing", children: [
+            { fileName: "Penetration testing - scanning" },
+            { fileName: "Penetration testing - enumeration" },
+          ] }
+      ]
+    },
+    {
+      fileName: "Math",
+      children: [
+        { fileName: "Algebra 1" },
+        { fileName: "Algebra 2" },
+      ]
+    },
+    {
+      fileName: "Unix vs Linux",
+    },
+    {
+      fileName: "Soldering iron reviews",
+    }
+  ];
 
+  dataSource = new MatTreeNestedDataSource<NoteNode>();
+
+  treeControl = new NestedTreeControl<NoteNode>(node => node.children);
+
+  hasChildren = (_: number, node: NoteNode) => !!node.children && node.children.length > 0;
+
+  constructor() {
+    this.dataSource.data = this.notes;
+  }
 }
