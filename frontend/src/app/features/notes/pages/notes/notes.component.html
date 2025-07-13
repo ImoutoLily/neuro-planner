@@ -8,7 +8,7 @@
         <mat-icon class="mat-icon-rtl-mirror">
           {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
         </mat-icon>
-        {{ node.fileName }} DEF
+        {{ node.fileName }}
       </button>
     </div>
     <div [class.tree-invisible]="!treeControl.isExpanded(node)" role="group" (click)="$event.stopPropagation();">
