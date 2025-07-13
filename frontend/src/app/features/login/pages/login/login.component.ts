@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {MatError, MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
-import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {LiveErrorStateMatcher} from "@shared/validators/live-error-state-matcher";
@@ -19,7 +19,6 @@ import {MatTooltip} from "@angular/material/tooltip";
     MatInput,
     MatCard,
     MatCardHeader,
-    MatCardActions,
     MatCardContent,
     MatCardTitle,
     MatButton,

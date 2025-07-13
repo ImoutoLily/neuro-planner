@@ -34,6 +34,7 @@ import {MatSelect} from "@angular/material/select";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteDialogComponent} from "@features/todo/components/delete-dialog/delete-dialog.component";
 import {CompleteDialogComponent} from "@features/todo/components/complete-dialog/complete-dialog.component";
+import { CreateDialogComponent } from "@features/todo/components/create-dialog/create-dialog.component";
 
 @Component({
   selector: 'app-todo',
@@ -168,6 +169,16 @@ export class TodoComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openCreateDialog(): void {
+    const dialogRef = this.dialog.open(CreateDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.warn("NOT IMPLEMENTED");
+      }
+    });
   }
 
   openCompleteDialog(): void {

@@ -1,0 +1,10 @@
+form {
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: 400px) {
+    mat-form-field {
+      width: 320px;
+    }
+  }
+}
