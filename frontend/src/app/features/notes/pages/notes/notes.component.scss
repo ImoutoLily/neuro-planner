@@ -1,3 +1,50 @@
+.flex {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.notes, .notes-views {
+  flex-grow: 1;
+}
+
+.notes-views > mat-card:first-child {
+  margin-right: 1px;
+}
+
+.buttons-left, .buttons-right {
+  margin: 8px;
+}
+
+.buttons-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+mat-tree {
+  margin-right: 16px;
+}
+
 .tree-invisible {
   display: none;
 }
@@ -10,4 +57,12 @@
   .mat-nested-tree-node div[role=group] {
     padding-left: 36px;
   }
+}
+
+.editor {
+  flex-grow: 1;
+}
+
+.render {
+  flex-grow: 1;
 }

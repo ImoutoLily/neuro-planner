@@ -7,9 +7,11 @@ import {
   MatTreeNodeToggle
 } from "@angular/material/tree";
 import { NoteNode } from "@features/notes/models/note-node";
-import { MatButton } from "@angular/material/button";
+import { MatButton, MatIconButton } from "@angular/material/button";
 import { NestedTreeControl } from "@angular/cdk/tree";
 import { MatIcon } from "@angular/material/icon";
+import { MatCard } from "@angular/material/card";
+import { MatButtonToggle, MatButtonToggleGroup } from "@angular/material/button-toggle";
 
 @Component({
   selector: 'app-notes',
@@ -23,6 +25,10 @@ import { MatIcon } from "@angular/material/icon";
     MatIcon,
     MatTreeNodeOutlet,
     MatButton,
+    MatCard,
+    MatButtonToggleGroup,
+    MatButtonToggle,
+    MatIconButton,
   ],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'

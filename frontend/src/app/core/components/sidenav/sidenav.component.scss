@@ -6,6 +6,15 @@ mat-sidenav-container {
   height: 100%;
 }
 
+mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    flex-grow: 1;
+  }
+}
+
 mat-sidenav {
   padding-top: 1em;
   padding-left: 1em;
