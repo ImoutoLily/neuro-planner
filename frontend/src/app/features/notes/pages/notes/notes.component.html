@@ -11,7 +11,7 @@
         <mat-icon>search</mat-icon>
       </button>
     </div>
-    <mat-tree #tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree">
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree">
       <mat-tree-node *matTreeNodeDef="let node">
         <button mat-button>{{ node.fileName }}</button>
       </mat-tree-node>
