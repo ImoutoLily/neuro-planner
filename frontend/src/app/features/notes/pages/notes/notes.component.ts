@@ -12,6 +12,8 @@ import { NestedTreeControl } from "@angular/cdk/tree";
 import { MatIcon } from "@angular/material/icon";
 import { MatCard } from "@angular/material/card";
 import { MatButtonToggle, MatButtonToggleGroup } from "@angular/material/button-toggle";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { ViewMode } from "@features/notes/models/view-mode";
 
 @Component({
   selector: 'app-notes',
@@ -29,11 +31,16 @@ import { MatButtonToggle, MatButtonToggleGroup } from "@angular/material/button-
     MatButtonToggleGroup,
     MatButtonToggle,
     MatIconButton,
+    ReactiveFormsModule,
   ],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'
 })
 export class NotesComponent {
+  viewMode = new FormControl(ViewMode.SplitView);
+
+  protected readonly ViewMode = ViewMode;
+
   private readonly notes: NoteNode[] = [
     {
       fileName: "Rust",

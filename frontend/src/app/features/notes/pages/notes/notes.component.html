@@ -33,25 +33,29 @@
   <div class="column notes">
     <div class="row buttons-right">
       <span class="spacer"></span>
-      <mat-button-toggle-group name="viewMode" aria-label="View mode">
-        <mat-button-toggle value="editor">
+      <mat-button-toggle-group [formControl]="viewMode" aria-label="View mode">
+        <mat-button-toggle [value]="ViewMode.Editor">
           <mat-icon>edit</mat-icon>
         </mat-button-toggle>
-        <mat-button-toggle value="render">
+        <mat-button-toggle [value]="ViewMode.Render">
           <mat-icon>article</mat-icon>
         </mat-button-toggle>
-        <mat-button-toggle value="split_view">
+        <mat-button-toggle [value]="ViewMode.SplitView">
           <mat-icon>compare</mat-icon>
         </mat-button-toggle>
       </mat-button-toggle-group>
     </div>
     <div class="row notes-views">
-      <mat-card appearance="outlined" class="editor">
+      @if (viewMode.value == ViewMode.Editor || viewMode.value == ViewMode.SplitView) {
+        <mat-card appearance="outlined" class="editor">
 
-      </mat-card>
-      <mat-card appearance="outlined" class="render">
+        </mat-card>
+      }
+      @if (viewMode.value == ViewMode.Render || viewMode.value == ViewMode.SplitView) {
+        <mat-card appearance="outlined" class="render">
 
-      </mat-card>
+        </mat-card>
+      }
     </div>
   </div>
 </div>
