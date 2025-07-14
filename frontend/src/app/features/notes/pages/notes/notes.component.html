@@ -47,8 +47,8 @@
     </div>
     <div class="row notes-views">
       @if (viewMode.value == ViewMode.Editor || viewMode.value == ViewMode.SplitView) {
-        <mat-card appearance="outlined" class="editor">
-
+        <mat-card appearance="outlined" class="editor-container">
+          <textarea class="editor"></textarea>
         </mat-card>
       }
       @if (viewMode.value == ViewMode.Render || viewMode.value == ViewMode.SplitView) {

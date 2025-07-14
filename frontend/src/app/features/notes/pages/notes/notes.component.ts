@@ -14,6 +14,7 @@ import { MatCard } from "@angular/material/card";
 import { MatButtonToggle, MatButtonToggleGroup } from "@angular/material/button-toggle";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { ViewMode } from "@features/notes/models/view-mode";
+import { MatInput } from "@angular/material/input";
 
 @Component({
   selector: 'app-notes',
@@ -32,6 +33,7 @@ import { ViewMode } from "@features/notes/models/view-mode";
     MatButtonToggle,
     MatIconButton,
     ReactiveFormsModule,
+    MatInput,
   ],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'
