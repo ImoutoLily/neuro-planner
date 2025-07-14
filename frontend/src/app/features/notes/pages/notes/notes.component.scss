@@ -78,6 +78,10 @@ mat-tree {
   color: white;
 }
 
-.render {
+.render-container {
   flex-basis: 100%;
+}
+
+.render {
+  padding: 0 16px 0 16px;
 }

@@ -48,12 +48,13 @@
     <div class="row notes-views">
       @if (viewMode.value == ViewMode.Editor || viewMode.value == ViewMode.SplitView) {
         <mat-card appearance="outlined" class="editor-container">
-          <textarea class="editor"></textarea>
+          <textarea class="editor" [formControl]="noteCode"></textarea>
         </mat-card>
       }
       @if (viewMode.value == ViewMode.Render || viewMode.value == ViewMode.SplitView) {
-        <mat-card appearance="outlined" class="render">
-
+        <mat-card appearance="outlined" class="render-container">
+          <markdown class="render" lineNumbers emoji [data]="noteCode.value" ngPreserveWhitespaces>
+          </markdown>
         </mat-card>
       }
     </div>

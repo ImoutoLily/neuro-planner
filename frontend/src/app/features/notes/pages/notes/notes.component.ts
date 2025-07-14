@@ -15,6 +15,7 @@ import { MatButtonToggle, MatButtonToggleGroup } from "@angular/material/button-
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { ViewMode } from "@features/notes/models/view-mode";
 import { MatInput } from "@angular/material/input";
+import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
 
 @Component({
   selector: 'app-notes',
@@ -34,12 +35,15 @@ import { MatInput } from "@angular/material/input";
     MatIconButton,
     ReactiveFormsModule,
     MatInput,
+    MarkdownComponent,
   ],
+  providers: [provideMarkdown()],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'
 })
 export class NotesComponent {
   viewMode = new FormControl(ViewMode.SplitView);
+  noteCode = new FormControl("");
 
   protected readonly ViewMode = ViewMode;
 
