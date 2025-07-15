@@ -98,9 +98,7 @@ export class NotesComponent {
   handleEditorKeydown(event: KeyboardEvent) {
     if (event.key === "Tab") {
       this.handleTab(event);
-    }
-
-    if (event.key === "*" || event.key === "~" || event.key === "`") {
+    } else if (event.key === "*" || event.key === "~" || event.key === "`") {
       this.handleWrapWithSymbol(event);
     }
   }
