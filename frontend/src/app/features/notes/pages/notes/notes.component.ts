@@ -14,7 +14,6 @@ import { MatCard } from "@angular/material/card";
 import { MatButtonToggle, MatButtonToggleGroup } from "@angular/material/button-toggle";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { ViewMode } from "@features/notes/models/view-mode";
-import { MatInput } from "@angular/material/input";
 import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
 import { NgClass } from "@angular/common";
 import { environment } from "@environments/environment";
@@ -36,7 +35,6 @@ import { environment } from "@environments/environment";
     MatButtonToggle,
     MatIconButton,
     ReactiveFormsModule,
-    MatInput,
     MarkdownComponent,
     NgClass,
   ],
