@@ -17,7 +17,6 @@ import { ViewMode } from "@features/notes/models/view-mode";
 import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
 import { NgClass } from "@angular/common";
 import { environment } from "@environments/environment";
-// @ts-ignore
 import Prism from 'prismjs';
 import 'prismjs/plugins/autoloader/prism-autoloader';
 
@@ -102,7 +101,7 @@ export class NotesComponent {
   private readonly asymmetricWrapSymbolKeys = new Set(Object.keys(this.asymmetricWrapSymbols));
 
   constructor() {
-    Prism.plugins.autoloader.languages_path = '/assets/prismjs/';
+    Prism.plugins['autoloader'].languages_path = '/assets/prismjs/';
     this.dataSource.data = this.notes;
   }
 
