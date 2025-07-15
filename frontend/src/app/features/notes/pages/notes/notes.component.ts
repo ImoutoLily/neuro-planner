@@ -16,6 +16,7 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { ViewMode } from "@features/notes/models/view-mode";
 import { MatInput } from "@angular/material/input";
 import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: 'app-notes',
@@ -36,6 +37,7 @@ import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
     ReactiveFormsModule,
     MatInput,
     MarkdownComponent,
+    NgClass,
   ],
   providers: [provideMarkdown()],
   templateUrl: './notes.component.html',

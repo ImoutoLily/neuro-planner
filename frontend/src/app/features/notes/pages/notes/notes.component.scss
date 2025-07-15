@@ -39,8 +39,14 @@ mat-tree {
   flex-grow: 1;
 }
 
-.notes-views > mat-card:first-child {
-  margin-right: 1px;
+.split-view {
+  mat-card:first-child {
+    margin-right: 2px;
+  }
+
+  mat-card:nth-child(2) {
+    margin-left: 2px;
+  }
 }
 
 .editor-container {
