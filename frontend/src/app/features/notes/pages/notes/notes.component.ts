@@ -151,7 +151,6 @@ export class NotesComponent {
 
     this.noteCode.setValue(noteCode);
 
-    target.selectionStart = newSelectionStart;
-    target.selectionEnd = newSelectionEnd;
+    target.setSelectionRange(newSelectionStart, newSelectionEnd);
   }
 }
