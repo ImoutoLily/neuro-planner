@@ -1,4 +1,5 @@
 export const commonEnvironment = {
   passwordMinLength: 12,
-  passwordMaxLength: 128
+  passwordMaxLength: 128,
+  tabLength: 2,
 }

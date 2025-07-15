@@ -17,6 +17,7 @@ import { ViewMode } from "@features/notes/models/view-mode";
 import { MatInput } from "@angular/material/input";
 import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
 import { NgClass } from "@angular/common";
+import { environment } from "@environments/environment";
 
 @Component({
   selector: 'app-notes',
@@ -48,6 +49,8 @@ export class NotesComponent {
   noteCode = new FormControl("");
 
   protected readonly ViewMode = ViewMode;
+
+  protected readonly environment = environment;
 
   private readonly notes: NoteNode[] = [
     {
@@ -92,5 +95,25 @@ export class NotesComponent {
 
   constructor() {
     this.dataSource.data = this.notes;
+  }
+
+  handleEditorKeydown(event: KeyboardEvent) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+
+      const target = event.target as HTMLTextAreaElement;
+
+      const noteCode
+        = this.noteCode.value?.substring(0, target.selectionStart)
+        + ' '.repeat(environment.tabLength)
+        + this.noteCode.value?.substring(target.selectionEnd);
+
+      const newCursorPosition = target.selectionStart + environment.tabLength;
+
+      this.noteCode.setValue(noteCode);
+
+      target.selectionStart = newCursorPosition;
+      target.selectionEnd = newCursorPosition;
+    }
   }
 }

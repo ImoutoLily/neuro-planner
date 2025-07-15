@@ -48,7 +48,7 @@
     <div class="row note-view" [ngClass]="viewMode.value == ViewMode.SplitView ? 'split-view' : ''">
       @if (viewMode.value == ViewMode.Editor || viewMode.value == ViewMode.SplitView) {
         <mat-card appearance="outlined" class="editor-container">
-          <textarea class="editor" [formControl]="noteCode"></textarea>
+          <textarea class="editor" [formControl]="noteCode" (keydown)="handleEditorKeydown($event)"></textarea>
         </mat-card>
       }
       @if (viewMode.value == ViewMode.Render || viewMode.value == ViewMode.SplitView) {
