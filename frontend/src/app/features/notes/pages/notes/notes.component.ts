@@ -99,21 +99,52 @@ export class NotesComponent {
 
   handleEditorKeydown(event: KeyboardEvent) {
     if (event.key === "Tab") {
-      event.preventDefault();
-
-      const target = event.target as HTMLTextAreaElement;
-
-      const noteCode
-        = this.noteCode.value?.substring(0, target.selectionStart)
-        + ' '.repeat(environment.tabLength)
-        + this.noteCode.value?.substring(target.selectionEnd);
-
-      const newCursorPosition = target.selectionStart + environment.tabLength;
-
-      this.noteCode.setValue(noteCode);
-
-      target.selectionStart = newCursorPosition;
-      target.selectionEnd = newCursorPosition;
+      this.handleTab(event);
     }
+
+    if (event.key === "*" || event.key === "~" || event.key === "`") {
+      this.handleWrapWithSymbol(event);
+    }
+  }
+
+  private handleTab(event: KeyboardEvent) {
+    event.preventDefault();
+
+    const target = event.target as HTMLTextAreaElement;
+
+    const noteCode
+      = this.noteCode.value?.substring(0, target.selectionStart)
+      + ' '.repeat(environment.tabLength)
+      + this.noteCode.value?.substring(target.selectionEnd);
+
+    const newCursorPosition = target.selectionStart + environment.tabLength;
+
+    this.noteCode.setValue(noteCode);
+
+    target.selectionStart = newCursorPosition;
+    target.selectionEnd = newCursorPosition;
+  }
+
+  private handleWrapWithSymbol(event: KeyboardEvent) {
+    const target = event.target as HTMLTextAreaElement;
+
+    if (target.selectionStart == target.selectionEnd) return;
+
+    event.preventDefault();
+
+    const noteCode
+      = this.noteCode.value?.substring(0, target.selectionStart)
+      + event.key
+      + this.noteCode.value?.substring(target.selectionStart, target.selectionEnd)
+      + event.key
+      + this.noteCode.value?.substring(target.selectionEnd);
+
+    const newSelectionStart = target.selectionStart + 1;
+    const newSelectionEnd = target.selectionEnd + 1;
+
+    this.noteCode.setValue(noteCode);
+
+    target.selectionStart = newSelectionStart;
+    target.selectionEnd = newSelectionEnd;
   }
 }
