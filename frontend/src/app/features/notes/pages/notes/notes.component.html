@@ -1,6 +1,6 @@
 <div class="flex">
-  <div class="column">
-    <div class="row buttons-left">
+  <div class="row">
+    <div class="buttons">
       <button mat-icon-button aria-label="Open folder button">
         <mat-icon>folder</mat-icon>
       </button>
@@ -11,6 +11,22 @@
         <mat-icon>search</mat-icon>
       </button>
     </div>
+    <span class="spacer"></span>
+    <div class="buttons">
+      <mat-button-toggle-group [formControl]="viewMode" aria-label="View mode">
+        <mat-button-toggle [value]="ViewMode.Editor">
+          <mat-icon>edit</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle [value]="ViewMode.Render">
+          <mat-icon>article</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle [value]="ViewMode.SplitView">
+          <mat-icon>compare</mat-icon>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+  <div class="row notes">
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree">
       <mat-tree-node *matTreeNodeDef="let node">
         <button mat-button>{{ node.fileName }}</button>
@@ -29,23 +45,7 @@
         </div>
       </mat-nested-tree-node>
     </mat-tree>
-  </div>
-  <div class="column notes">
-    <div class="row buttons-right">
-      <span class="spacer"></span>
-      <mat-button-toggle-group [formControl]="viewMode" aria-label="View mode">
-        <mat-button-toggle [value]="ViewMode.Editor">
-          <mat-icon>edit</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle [value]="ViewMode.Render">
-          <mat-icon>article</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle [value]="ViewMode.SplitView">
-          <mat-icon>compare</mat-icon>
-        </mat-button-toggle>
-      </mat-button-toggle-group>
-    </div>
-    <div class="row notes-views">
+    <div class="row note-view">
       @if (viewMode.value == ViewMode.Editor || viewMode.value == ViewMode.SplitView) {
         <mat-card appearance="outlined" class="editor-container">
           <textarea class="editor" [formControl]="noteCode"></textarea>
@@ -53,7 +53,7 @@
       }
       @if (viewMode.value == ViewMode.Render || viewMode.value == ViewMode.SplitView) {
         <mat-card appearance="outlined" class="render-container">
-          <markdown class="render" lineNumbers emoji [data]="noteCode.value" ngPreserveWhitespaces>
+          <markdown class="render" lineNumbers emoji clipboard [data]="noteCode.value" ngPreserveWhitespaces>
           </markdown>
         </mat-card>
       }
