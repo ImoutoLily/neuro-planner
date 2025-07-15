@@ -119,17 +119,16 @@ export class NotesComponent {
 
     const target = event.target as HTMLTextAreaElement;
 
-    const noteCode
-      = this.noteCode.value?.substring(0, target.selectionStart)
-      + ' '.repeat(environment.tabLength)
-      + this.noteCode.value?.substring(target.selectionEnd);
+    const tabs = ' '.repeat(environment.tabLength);
 
     const newCursorPosition = target.selectionStart + environment.tabLength;
 
-    this.noteCode.setValue(noteCode);
+    // Yes, this is deprecated, but there currently is no other way to maintain the undo / redo stack
+    // when updating an element from JS/TS
+    // noinspection JSDeprecatedSymbols
+    document.execCommand("insertText", false, tabs);
 
-    target.selectionStart = newCursorPosition;
-    target.selectionEnd = newCursorPosition;
+    target.setSelectionRange(newCursorPosition, newCursorPosition);
   }
 
   private handlePairSymbol(event: KeyboardEvent, onlyWrap = false) {
@@ -139,17 +138,18 @@ export class NotesComponent {
 
     event.preventDefault();
 
-    const noteCode
-      = this.noteCode.value?.substring(0, target.selectionStart)
-      + event.key
+    const selectionReplacement
+      = event.key
       + this.noteCode.value?.substring(target.selectionStart, target.selectionEnd)
-      + (this.asymmetricWrapSymbols[event.key] ?? event.key)
-      + this.noteCode.value?.substring(target.selectionEnd);
+      + (this.asymmetricWrapSymbols[event.key] ?? event.key);
 
     const newSelectionStart = target.selectionStart + 1;
     const newSelectionEnd = target.selectionEnd + 1;
 
-    this.noteCode.setValue(noteCode);
+    // Yes, this is deprecated, but there currently is no other way to maintain the undo / redo stack
+    // when updating an element from JS/TS
+    // noinspection JSDeprecatedSymbols
+    document.execCommand("insertText", false, selectionReplacement);
 
     target.setSelectionRange(newSelectionStart, newSelectionEnd);
   }
