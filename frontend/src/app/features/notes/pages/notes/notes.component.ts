@@ -46,6 +46,10 @@ export class NotesComponent {
   viewMode = new FormControl(ViewMode.SplitView);
   noteCode = new FormControl("");
 
+  dataSource = new MatTreeNestedDataSource<NoteNode>();
+
+  treeControl = new NestedTreeControl<NoteNode>(node => node.children);
+
   protected readonly ViewMode = ViewMode;
 
   protected readonly environment = environment;
@@ -85,21 +89,28 @@ export class NotesComponent {
     }
   ];
 
-  dataSource = new MatTreeNestedDataSource<NoteNode>();
-
-  treeControl = new NestedTreeControl<NoteNode>(node => node.children);
-
-  hasChildren = (_: number, node: NoteNode) => !!node.children && node.children.length > 0;
+  private readonly selectionWrapSymbols = new Set(["*", "~"]);
+  private readonly alwaysWrapSymbols = new Set(["`", "'", "\""]);
+  private readonly asymmetricWrapSymbols: { [key: string]: string } = {
+    "(": ")",
+    "[": "]",
+    "{": "}"
+  };
+  private readonly asymmetricWrapSymbolKeys = new Set(Object.keys(this.asymmetricWrapSymbols));
 
   constructor() {
     this.dataSource.data = this.notes;
   }
 
+  hasChildren = (_: number, node: NoteNode) => !!node.children && node.children.length > 0;
+
   handleEditorKeydown(event: KeyboardEvent) {
     if (event.key === "Tab") {
       this.handleTab(event);
-    } else if (event.key === "*" || event.key === "~" || event.key === "`") {
-      this.handleWrapWithSymbol(event);
+    } else if (this.selectionWrapSymbols.has(event.key)) {
+      this.handlePairSymbol(event, true);
+    } else if (this.alwaysWrapSymbols.has(event.key) || this.asymmetricWrapSymbolKeys.has(event.key)) {
+      this.handlePairSymbol(event);
     }
   }
 
@@ -121,10 +132,10 @@ export class NotesComponent {
     target.selectionEnd = newCursorPosition;
   }
 
-  private handleWrapWithSymbol(event: KeyboardEvent) {
+  private handlePairSymbol(event: KeyboardEvent, onlyWrap = false) {
     const target = event.target as HTMLTextAreaElement;
 
-    if (target.selectionStart == target.selectionEnd) return;
+    if (onlyWrap && target.selectionStart == target.selectionEnd) return;
 
     event.preventDefault();
 
@@ -132,7 +143,7 @@ export class NotesComponent {
       = this.noteCode.value?.substring(0, target.selectionStart)
       + event.key
       + this.noteCode.value?.substring(target.selectionStart, target.selectionEnd)
-      + event.key
+      + (this.asymmetricWrapSymbols[event.key] ?? event.key)
       + this.noteCode.value?.substring(target.selectionEnd);
 
     const newSelectionStart = target.selectionStart + 1;
