@@ -18,7 +18,7 @@ import { MarkdownComponent, provideMarkdown } from "ngx-markdown";
 import { NgClass } from "@angular/common";
 import { environment } from "@environments/environment";
 import Prism from 'prismjs';
-import 'prismjs/plugins/autoloader/prism-autoloader';
+import 'prismjs/plugins/autoloader/prism-autoloader.js';
 
 @Component({
   selector: 'app-notes',
@@ -102,6 +102,7 @@ export class NotesComponent {
 
   constructor() {
     Prism.plugins['autoloader'].languages_path = '/assets/prismjs/';
+
     this.dataSource.data = this.notes;
   }
 
