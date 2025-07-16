@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { EditorActionsComponent } from "@features/notes/components/editor-actions/editor-actions.component";
-import { FileTreeComponent } from "@features/notes/components/file-tree/file-tree.component";
-import { EditorComponent } from "@features/notes/components/editor/editor.component";
+import { NotesActionsComponent } from "@features/notes/components/notes-actions/notes-actions.component";
+import { NotesFileTreeComponent } from "@features/notes/components/notes-file-tree/notes-file-tree.component";
+import { NotesEditorComponent } from "@features/notes/components/notes-editor/notes-editor.component";
 
 @Component({
   selector: 'app-notes',
   standalone: true,
   imports: [
-    EditorActionsComponent,
-    FileTreeComponent,
-    EditorComponent,
+    NotesActionsComponent,
+    NotesFileTreeComponent,
+    NotesEditorComponent,
   ],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.scss'

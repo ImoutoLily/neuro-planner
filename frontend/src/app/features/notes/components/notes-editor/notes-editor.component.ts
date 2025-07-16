@@ -10,7 +10,7 @@ import Prism from 'prismjs';
 import 'prismjs/plugins/autoloader/prism-autoloader.js';
 
 @Component({
-  selector: 'app-editor',
+  selector: 'app-notes-editor',
   standalone: true,
   imports: [
     MarkdownComponent,
@@ -19,10 +19,10 @@ import 'prismjs/plugins/autoloader/prism-autoloader.js';
     NgClass
   ],
   providers: [provideMarkdown()],
-  templateUrl: './editor.component.html',
-  styleUrl: './editor.component.scss'
+  templateUrl: './notes-editor.component.html',
+  styleUrl: './notes-editor.component.scss'
 })
-export class EditorComponent implements OnInit {
+export class NotesEditorComponent implements OnInit {
   viewMode = ViewMode.SplitView;
   noteCode = new FormControl("");
 

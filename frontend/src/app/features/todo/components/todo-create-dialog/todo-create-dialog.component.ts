@@ -8,7 +8,7 @@ import { MatDatepicker, MatDatepickerInput, MatDatepickerToggle } from "@angular
 import { provideNativeDateAdapter } from "@angular/material/core";
 
 @Component({
-  selector: 'app-create-dialog',
+  selector: 'app-todo-create-dialog',
   standalone: true,
   imports: [
     MatDialogTitle,
@@ -27,10 +27,10 @@ import { provideNativeDateAdapter } from "@angular/material/core";
     MatSuffix
   ],
   providers: [provideNativeDateAdapter()],
-  templateUrl: './create-dialog.component.html',
-  styleUrl: './create-dialog.component.scss'
+  templateUrl: './todo-create-dialog.component.html',
+  styleUrl: './todo-create-dialog.component.scss'
 })
-export class CreateDialogComponent {
+export class TodoCreateDialogComponent {
   todoForm = new FormGroup({
     description: new FormControl("", Validators.required),
     dueDate: new FormControl("", Validators.required),

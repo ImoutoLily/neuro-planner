@@ -14,7 +14,7 @@ export interface ConfirmDialogData {
 }
 
 @Component({
-  selector: 'app-complete-dialog',
+  selector: 'app-todo-complete-dialog',
   standalone: true,
   imports: [
     MatDialogTitle,
@@ -23,9 +23,9 @@ export interface ConfirmDialogData {
     MatButton,
     MatDialogClose
   ],
-  templateUrl: './complete-dialog.component.html',
-  styleUrl: './complete-dialog.component.scss'
+  templateUrl: './todo-complete-dialog.component.html',
+  styleUrl: './todo-complete-dialog.component.scss'
 })
-export class CompleteDialogComponent {
+export class TodoCompleteDialogComponent {
   readonly data = inject<ConfirmDialogData>(MAT_DIALOG_DATA);
 }

@@ -18,7 +18,7 @@ import { MatSort, MatSortHeader } from "@angular/material/sort";
 import { SelectionModel } from "@angular/cdk/collections";
 import { TodoItem } from "@shared/models/todo-item";
 import { TodoService } from "@features/todo/services/todo.service";
-import { DeleteDialogComponent } from "@features/todo/components/delete-dialog/delete-dialog.component";
+import { TodoDeleteDialogComponent } from "@features/todo/components/todo-delete-dialog/todo-delete-dialog.component";
 import { MatDialog } from "@angular/material/dialog";
 
 @Component({
@@ -108,7 +108,7 @@ export class TodoTableComponent implements OnInit, AfterViewInit{
   openDeleteDialog(todo: TodoItem): void {
     const todos = [todo];
 
-    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+    const dialogRef = this.dialog.open(TodoDeleteDialogComponent, {
       data: { todos: todos }
     });
 

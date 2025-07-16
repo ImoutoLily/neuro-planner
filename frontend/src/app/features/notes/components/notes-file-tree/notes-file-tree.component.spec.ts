@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CompleteDialogComponent } from './complete-dialog.component';
+import { NotesFileTreeComponent } from './notes-file-tree.component';
 
-describe('CompleteDialogComponent', () => {
-  let component: CompleteDialogComponent;
-  let fixture: ComponentFixture<CompleteDialogComponent>;
+describe('NotesFileTreeComponent', () => {
+  let component: NotesFileTreeComponent;
+  let fixture: ComponentFixture<NotesFileTreeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CompleteDialogComponent]
+      imports: [NotesFileTreeComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CompleteDialogComponent);
+    fixture = TestBed.createComponent(NotesFileTreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

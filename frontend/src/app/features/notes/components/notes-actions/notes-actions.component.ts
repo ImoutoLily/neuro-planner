@@ -7,7 +7,7 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { NotesService } from "@features/notes/services/notes.service";
 
 @Component({
-  selector: 'app-editor-actions',
+  selector: 'app-notes-actions',
   standalone: true,
   imports: [
     MatButtonToggle,
@@ -16,10 +16,10 @@ import { NotesService } from "@features/notes/services/notes.service";
     MatIconButton,
     ReactiveFormsModule
   ],
-  templateUrl: './editor-actions.component.html',
-  styleUrl: './editor-actions.component.scss'
+  templateUrl: './notes-actions.component.html',
+  styleUrl: './notes-actions.component.scss'
 })
-export class EditorActionsComponent implements OnInit {
+export class NotesActionsComponent implements OnInit {
   viewMode = new FormControl(ViewMode.SplitView);
 
   protected readonly ViewMode = ViewMode;

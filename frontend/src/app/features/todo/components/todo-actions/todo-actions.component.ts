@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatButton } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
-import { CreateDialogComponent } from "@features/todo/components/create-dialog/create-dialog.component";
-import { CompleteDialogComponent } from "@features/todo/components/complete-dialog/complete-dialog.component";
+import { TodoCreateDialogComponent } from "@features/todo/components/todo-create-dialog/todo-create-dialog.component";
+import { TodoCompleteDialogComponent } from "@features/todo/components/todo-complete-dialog/todo-complete-dialog.component";
 import { TodoItem } from "@shared/models/todo-item";
-import { DeleteDialogComponent } from "@features/todo/components/delete-dialog/delete-dialog.component";
+import { TodoDeleteDialogComponent } from "@features/todo/components/todo-delete-dialog/todo-delete-dialog.component";
 import { MatDialog } from "@angular/material/dialog";
 import { TodoService } from "@features/todo/services/todo.service";
 
@@ -40,7 +40,7 @@ export class TodoActionsComponent implements OnInit {
   }
 
   openCreateDialog(): void {
-    const dialogRef = this.dialog.open(CreateDialogComponent);
+    const dialogRef = this.dialog.open(TodoCreateDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -50,7 +50,7 @@ export class TodoActionsComponent implements OnInit {
   }
 
   openCompleteDialog(): void {
-    const dialogRef = this.dialog.open(CompleteDialogComponent, {
+    const dialogRef = this.dialog.open(TodoCompleteDialogComponent, {
       data: { todos: this.selectedTodos.filter(item => !item.completed) }
     });
 
@@ -64,7 +64,7 @@ export class TodoActionsComponent implements OnInit {
   openDeleteDialog(): void {
     const todos = this.selectedTodos;
 
-    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+    const dialogRef = this.dialog.open(TodoDeleteDialogComponent, {
       data: { todos: todos }
     });
 

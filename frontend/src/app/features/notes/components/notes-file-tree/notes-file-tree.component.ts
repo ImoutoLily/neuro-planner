@@ -14,7 +14,7 @@ import { NoteNode } from "@features/notes/models/note-node";
 import { NotesService } from "@features/notes/services/notes.service";
 
 @Component({
-  selector: 'app-file-tree',
+  selector: 'app-notes-file-tree',
   standalone: true,
   imports: [
     MatTree,
@@ -26,10 +26,10 @@ import { NotesService } from "@features/notes/services/notes.service";
     MatTreeNodeOutlet,
     MatTreeNodeDef
   ],
-  templateUrl: './file-tree.component.html',
-  styleUrl: './file-tree.component.scss'
+  templateUrl: './notes-file-tree.component.html',
+  styleUrl: './notes-file-tree.component.scss'
 })
-export class FileTreeComponent implements OnInit {
+export class NotesFileTreeComponent implements OnInit {
   dataSource = new MatTreeNestedDataSource<NoteNode>();
 
   treeControl = new NestedTreeControl<NoteNode>(node => node.children);

@@ -14,7 +14,7 @@ export interface DeleteDialogData {
 }
 
 @Component({
-  selector: 'app-delete-dialog',
+  selector: 'app-todo-delete-dialog',
   standalone: true,
   imports: [
     MatDialogTitle,
@@ -23,9 +23,9 @@ export interface DeleteDialogData {
     MatButton,
     MatDialogClose
   ],
-  templateUrl: './delete-dialog.component.html',
-  styleUrl: './delete-dialog.component.scss'
+  templateUrl: './todo-delete-dialog.component.html',
+  styleUrl: './todo-delete-dialog.component.scss'
 })
-export class DeleteDialogComponent {
+export class TodoDeleteDialogComponent {
   readonly data = inject<DeleteDialogData>(MAT_DIALOG_DATA);
 }
