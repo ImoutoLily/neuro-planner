@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { NoteNode } from "@features/notes/models/note-node";
 import { ViewMode } from "@features/notes/models/view-mode";
 
