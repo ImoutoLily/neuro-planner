@@ -1,0 +1,22 @@
+#search {
+  flex-grow: 1;
+}
+
+.filters > mat-form-field:not(:last-child) {
+  margin-right: 0.5em;
+}
+
+@media (max-width: 750px) {
+  .filters {
+    flex-direction: column;
+
+    > mat-form-field {
+      width: 100%;
+      margin-right: 0;
+    }
+
+    > mat-form-field:not(:last-child) {
+      margin-bottom: 0.5em;
+    }
+  }
+}

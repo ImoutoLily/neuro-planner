@@ -1,0 +1,16 @@
+.actions {
+  > button:not(:last-child) {
+    margin-right: 0.5em;
+  }
+}
+
+@media (max-width: 750px) {
+  .actions {
+    flex-direction: column;
+    align-items: flex-start;
+
+    > button:not(:last-child) {
+      margin-bottom: 0.5em;
+    }
+  }
+}
