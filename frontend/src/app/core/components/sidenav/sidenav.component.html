@@ -1,6 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="push" role="navigation" [autoFocus]="false">
-    <div class="links">
+    <div class="column links">
       <a mat-button routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">
         <mat-icon>home</mat-icon>
         Home
@@ -19,7 +19,7 @@
       </a>
     </div>
     <mat-divider></mat-divider>
-    <div class="links">
+    <div class="column links">
       <a mat-button routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">
         <mat-icon>login</mat-icon>
         Login
@@ -36,7 +36,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <app-toolbar (toggleMenuEvent)="sidenav.toggle()"></app-toolbar>
-    <div class="content">
+    <div class="grow content">
       <ng-content></ng-content>
     </div>
   </mat-sidenav-content>

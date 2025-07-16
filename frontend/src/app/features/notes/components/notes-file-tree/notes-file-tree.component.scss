@@ -1,5 +1,5 @@
 mat-tree {
-  margin-right: 16px;
+  margin-right: 1em;
 }
 
 .tree-invisible {
@@ -12,6 +12,6 @@ mat-tree {
   list-style-type: none;
 
   .mat-nested-tree-node div[role=group] {
-    padding-left: 36px;
+    padding-left: 2em;
   }
 }
