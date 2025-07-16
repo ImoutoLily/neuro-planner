@@ -1,0 +1,11 @@
+@if (viewMode == ViewMode.Editor || viewMode == ViewMode.SplitView) {
+  <mat-card appearance="outlined" class="container" [ngClass]="viewMode == ViewMode.SplitView ? 'split-view' : ''">
+    <textarea class="editor" [formControl]="noteCode" (keydown)="handleEditorKeydown($event)"></textarea>
+  </mat-card>
+}
+@if (viewMode == ViewMode.Render || viewMode == ViewMode.SplitView) {
+  <mat-card appearance="outlined" class="container" [ngClass]="viewMode == ViewMode.SplitView ? 'split-view' : ''">
+    <markdown class="render" lineNumbers emoji clipboard [data]="noteCode.value" ngPreserveWhitespaces>
+    </markdown>
+  </mat-card>
+}

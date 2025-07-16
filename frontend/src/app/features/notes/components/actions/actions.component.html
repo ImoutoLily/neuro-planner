@@ -1,0 +1,25 @@
+<div class="buttons">
+  <button mat-icon-button aria-label="Open folder button">
+    <mat-icon>folder</mat-icon>
+  </button>
+  <button mat-icon-button aria-label="Create note button">
+    <mat-icon>note_add</mat-icon>
+  </button>
+  <button mat-icon-button aria-label="Search notes button">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>
+<span class="spacer"></span>
+<div class="buttons">
+  <mat-button-toggle-group [formControl]="viewMode" aria-label="View mode">
+    <mat-button-toggle [value]="ViewMode.Editor">
+      <mat-icon>edit</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle [value]="ViewMode.Render">
+      <mat-icon>article</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle [value]="ViewMode.SplitView">
+      <mat-icon>compare</mat-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

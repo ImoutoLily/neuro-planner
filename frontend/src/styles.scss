@@ -44,3 +44,21 @@ input:-webkit-autofill {
 .mdc-text-field--filled:has(input:-webkit-autofill) {
   background-color: mat.get-theme-color($theme, secondary, 25);
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

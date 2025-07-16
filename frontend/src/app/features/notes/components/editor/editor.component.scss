@@ -1,0 +1,31 @@
+.container {
+  flex-basis: 100%;
+}
+
+.editor {
+  padding: 16px;
+  font-size: 1.4rem;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: auto;
+  display: block;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+.render {
+  padding: 0 16px 0 16px;
+}
+
+.split-view:first-child {
+  margin-right: 2px;
+}
+
+.split-view:nth-child(2) {
+  margin-left: 2px;
+}
