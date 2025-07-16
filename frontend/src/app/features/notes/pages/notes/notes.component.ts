@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActionsComponent } from "@features/notes/components/actions/actions.component";
+import { EditorActionsComponent } from "@features/notes/components/editor-actions/editor-actions.component";
 import { FileTreeComponent } from "@features/notes/components/file-tree/file-tree.component";
 import { EditorComponent } from "@features/notes/components/editor/editor.component";
 
@@ -7,7 +7,7 @@ import { EditorComponent } from "@features/notes/components/editor/editor.compon
   selector: 'app-notes',
   standalone: true,
   imports: [
-    ActionsComponent,
+    EditorActionsComponent,
     FileTreeComponent,
     EditorComponent,
   ],
@@ -15,7 +15,4 @@ import { EditorComponent } from "@features/notes/components/editor/editor.compon
   styleUrl: './notes.component.scss'
 })
 export class NotesComponent {
-  constructor() {
-
-  }
 }
