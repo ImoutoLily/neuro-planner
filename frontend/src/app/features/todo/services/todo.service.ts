@@ -36,7 +36,7 @@ export class TodoService {
   constructor() { }
 
   setSelectedTodos(selectedTodos: TodoItem[]) {
-    this.todos.next(selectedTodos);
+    this.selectedTodos.next(selectedTodos);
   }
 
   filter(search: string, startDate: Date | null, dueDate: Date | null, status: TodoStatus) {
